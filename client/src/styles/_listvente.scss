@@ -1,0 +1,49 @@
+.list{
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    background: #f0f2f5;
+}
+
+.header-list{
+    padding: 15px;
+    background: #376369;
+    border: 1px solid #838383;
+    h1{
+        font-family: Open sans;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+    }
+}
+
+.tableau-de-vente{
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #cccccc;
+    box-shadow: -2px 2px 2px 2px #dadada;
+    .table{
+        .head_1{
+            background: #39858f;
+            .li_1{
+                .co{
+                    font-family: Roboto;
+                    font-size: 14px;
+                    border: 1px solid #fff;
+                }
+            }
+        }
+        .li_2{
+            .co2{
+                font-family: Roboto;
+                font-weight: 500;
+                border: 1px solid #dddddd;
+            }
+        }
+    }
+}

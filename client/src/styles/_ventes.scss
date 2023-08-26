@@ -1,0 +1,134 @@
+.ventes{
+    flex: 4;
+    background-color: #f0f2f5;
+    width: 100%;
+    height: calc(95vh - 50px);
+    overflow-y: scroll;
+    
+}
+
+.header-vente{
+    padding: 15px;
+    background: #376369;
+    box-shadow: -2px 2px 2px 2px #516f74;
+    border: 1px solid #6b7e91;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #f0f2f5;
+        font-family: 'Roboto';
+    }
+    .btn-vendues{
+        height: 40px;
+        font-family: Roboto;
+        text-transform: uppercase;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        background: #179135;
+        margin-left: 20px;
+        width: 200px;
+       
+    }
+}
+
+.vente-container{
+    padding: 15px;
+    margin: 10px;
+    background: #fff;
+    box-shadow: -2px -2px 2px 2px #bdc0c0;
+    border-radius: 10px;
+    border:1px solid #dfdfdf;
+    
+    .vente-infos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        tbody{
+            th{
+                margin: 10px;
+                font-family: Open sans;
+                font-weight: 500;
+            }
+           span{
+            text-align: center;
+            font-family: Roboto,sans-serif;
+            color: red;
+           }
+        }
+    }
+    .inf{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+        label{
+            font-family: Open sans,sans-serif;
+            font-weight: 600;
+        }
+        select{
+            width: 300px;
+            height: 40px;
+            outline: none;
+            border:1px solid #c3c9ca;
+            margin-right: 500px;
+        }
+        input{
+            width: 300px;
+            height: 40px;
+            padding: 15px;
+            outline: none;
+            border:1px solid #c3c9ca;
+            margin-right: 500px;
+        }
+    }
+}
+
+.btn-vente{
+    width: 200px;
+    height: 40px;
+    font-family: Roboto;
+    color: #fff;
+    background: #6f88af;
+    margin: 20px;
+    border: none;
+    box-shadow: -2px -2px 2px 2px #226faf;
+    border-radius: 5px;
+    &:hover{
+        background: #157dd3;
+    }
+}
+
+.btn-incre{
+    border: none;
+    background: #1cb342;
+    color: #fff;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    transition: all 0.3s ;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.btn-decre{
+    border: none;
+    background: #1c51c5;
+    color: #fff;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    transition: all 0.3s ;
+    &:hover{
+        transform: scale(1.1);
+    }
+}
+
+.qtys{
+    margin: 20px;
+}

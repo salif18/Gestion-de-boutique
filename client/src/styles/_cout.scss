@@ -1,0 +1,160 @@
+.cout{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 400px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+    .icon{
+        font-size: 40px;
+        color: blue;
+    }
+}
+
+.achats{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 400px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+    .icon{
+        font-size: 40px;
+        color: rgb(252, 13, 13);
+    }
+}
+
+.vents{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 400px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+    .icon{
+        font-size: 40px;
+        color: rgb(252, 196, 13);
+    }
+}
+
+.revenus{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 600px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+    .icon{
+        font-size: 80px;
+        color: rgb(36, 172, 24);
+    }
+    .r{
+        display: flex;
+    }
+}
+
+.depenses{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    flex: 1;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+    .icon{
+        font-size: 40px;
+        color: rgb(103, 182, 155);
+    }
+}
+
+.stats{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    flex: 1;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p{
+        font-size: 16px;
+        font-family: Roboto;
+
+    }
+}
