@@ -25,7 +25,7 @@ exports.addDepenses = async(req,res)=> {
 exports.getDepenses = async(req,res)=> {
     try{
       const results = await new Promise((resolve,reject)=>{
-        db.query('SELECT*FROM depenses ',(err,results)=>{
+        db.query('SELECT*FROM depenses ORDER BY timestamps ASC',(err,results)=>{
             if(err){
                 reject(err)
             }else{

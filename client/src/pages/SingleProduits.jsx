@@ -1,10 +1,11 @@
-import React, {  useEffect, useState } from 'react';
+import React, {  useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import axios from 'axios';
+import { MyStore } from '../context/store';
 
 const SingleProduits = () => {
     const navigate = useNavigate()
-
+  const { setMessage ,message} = useContext(MyStore)
     //etat initial des champs de formulaire
     const [produits, setProduits] = useState({
       nom:"",
@@ -67,8 +68,8 @@ const SingleProduits = () => {
         stocks: produits.stocks,
       
         })
-          .then((res) => {
-            setItems(res.data)
+          .then((response) => {
+            setMessage(response.data.message)
           }).catch((err) => console.log(err));
           navigate('/produits');
           setProduits({

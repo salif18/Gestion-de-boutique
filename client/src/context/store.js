@@ -13,7 +13,7 @@ export const MyStoreProvider = (props) => {
   const [panier, setPanier] = useState([]);
   const [opperations,setOpperations] = useState([])
   const [errorStock, setErrorStock] = useState("");
-  
+  const [message,setMessage] = useState('')
 
   //ajout de de nouveau produits
   const handleSave = (item) => {
@@ -29,7 +29,7 @@ export const MyStoreProvider = (props) => {
         contacts: item.contacts,
         dateAchat: item.dateAchat,
       })
-      .then((res) => res.data)
+      .then((response) => setMessage(response.data.message))
       .catch((err) => console.log(err));
   };
 
@@ -70,7 +70,9 @@ export const MyStoreProvider = (props) => {
           fournisseur: item.fournisseur,
           contacts: item.contacts,
         })
-        .then((res) => res.data)
+        .then((response) => {
+          setMessage(response.data.message)
+        })
         .catch((err) => console.log(err));
       return configStock(item);
       
@@ -83,7 +85,7 @@ export const MyStoreProvider = (props) => {
        montants:item.montants,
        motifs:item.motifs
     })
-    .then((res) => res.data)
+    .then((response) => setMessage(response.data.message))
     .catch((err)=> console.log(err))
   }
 
@@ -106,14 +108,15 @@ export const MyStoreProvider = (props) => {
     const getVente =()=>{
     axios
       .get("http://localhost:3004/ventes")
-      .then((res) => {
-        setVendues(res.data);
+      .then((response) => {
+        setVendues(response.data);
       })
       .catch((err) => console.log(err));
     };
     getVente()
   }, []);
 
+  console.log(message)
 
   //charger les depenses
   useEffect(()=>{
@@ -144,6 +147,24 @@ export const MyStoreProvider = (props) => {
     }
   };
 
+  
+  //calcule de stock en ca 'annuler une vente
+  const cancelStock = async (item) => {
+    const product = produits.find((x) => x.id === item.id);
+    if (item.qty > 0 && item.qty <= product.stocks) {
+      product.stocks += item.qty;
+      try {
+        await axios.put(
+          `http://localhost:3004/produits/newStock/${product.id}`,
+          { stocks: product.stocks }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      setErrorStock(`Stock insuffisant pour le produit ${item.nom}`);
+    }
+  };
   
 
   //calcule vente total
@@ -214,9 +235,11 @@ export const MyStoreProvider = (props) => {
     achatTotal: achatTotal,
     errorStock: errorStock,
     configStock: configStock,
+    cancelStock:cancelStock,
     opperations:opperations,
     sendDepensesToDataBase:sendDepensesToDataBase,
-    depensesTotal:depensesTotal
+    depensesTotal:depensesTotal,
+    message:message
   };
 
   return (

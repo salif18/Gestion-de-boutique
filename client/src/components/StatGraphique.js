@@ -2,6 +2,7 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const StatGraphique = ({ data }) => {
+
   const chartData = data.map((row) => ({
     label: `${row.annee}-${row.mois}`,
     nombreVentes: row.nombre_ventes,

@@ -5,7 +5,7 @@ import { MyStore } from "../context/store";
 
 const Ventes = () => {
   const navigate = useNavigate()
-  const {handleVendre, panier, increment, decrement, setPanier,errorStock} = useContext(MyStore)
+  const {handleVendre,message, panier, increment, decrement, setPanier,errorStock} = useContext(MyStore)
 
   //bouton pour enregistrer les donnees dans la base de donnee et vider le panier
   const handleEnregistre =()=>{
@@ -60,6 +60,7 @@ const Ventes = () => {
           </tbody>))}
           </table>
           {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer les ventes</button>}
+          <p className="messag">{message}</p>
         </div>
       </div>
     </main>

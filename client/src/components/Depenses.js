@@ -5,7 +5,7 @@ const Depenses = () => {
     const {depensesTotal} = useContext(MyStore)
     return (
         <div className='depenses'>
-        <h1><MonetizationOnIcon className='icon'/> Depenses </h1>
+        <h1><MonetizationOnIcon className='icon'/>  Depenses sur benefice </h1>
         <p>{depensesTotal} Fcfa </p>
         </div>
     );

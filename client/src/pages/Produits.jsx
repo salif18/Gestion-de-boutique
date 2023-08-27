@@ -5,7 +5,7 @@ import { MyStore } from '../context/store';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
-import Tooltip from '../components/Tooltip';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 
 
@@ -55,7 +55,7 @@ const options = [
               <h3>Etat de stock</h3>
               <p> {numberStock} produits</p>
             </div>
-            <button className='btn-add' onClick={()=>navigate('/add-produits')}>Ajouter</button>
+            <button className='btn-add' onClick={()=>navigate('/add-produits')}>Ajouter <AddBusinessIcon style={{marginLeft:5}} /></button>
             </div>
             <div className='filter-search'>
              <select className='selection' value={selection} onChange={(e)=>setSelection(e.target.value)}>

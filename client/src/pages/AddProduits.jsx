@@ -4,7 +4,7 @@ import { MyStore } from '../context/store';
 
 const AddProduits = () => {
     const navigate = useNavigate()
-    const {handleSave} = useContext(MyStore)
+    const {handleSave, message} = useContext(MyStore)
     //etat initial des champs de formulaire
     const [produits, setProduits] = useState({
         nom:"",
@@ -80,6 +80,7 @@ const AddProduits = () => {
             <input type='number' name='prixVente' value={produits.prixVente} onChange={(e)=>handleChange(e)} placeholder='Prix de vente..' />
             {produits.prixVente.length <= 0 && <span>{error}</span>}
             </div>
+              <p className='messg'>{message}</p>
             </div>
 
            

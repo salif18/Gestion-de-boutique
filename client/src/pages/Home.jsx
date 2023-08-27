@@ -7,6 +7,7 @@ import Statstistiques from '../components/Statstistiques';
 import Depenses from '../components/Depenses';
 import axios from 'axios';
 import StatGraphique from '../components/StatGraphique';
+import CoutProduct from '../components/CoutProduct';
 
 
 
@@ -44,10 +45,12 @@ const Home = () => {
             </header>
             <div className='home-container-a'>
              <Achats/>
+            <CoutProduct/>
             <Ventes/>
-            <Cout/>
+           
             </div>
             <div className='home-container-b'>
+            <Cout/>
              <Depenses/>
              <Revenues/>
             </div>

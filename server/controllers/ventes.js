@@ -2,30 +2,8 @@ const db = require("../db/mysql_db");
 const Ventes = require("../models/ventes");
 
 exports.createVente = (req, res) => {
-  const {
-    id,
-    nom,
-    categories,
-    prixAchat,
-    prixVente,
-    stocks,
-    qty,
-    dateAchat,
-    
-  } = req.body;
-
-
-  const ventes = new Ventes(
-    id,
-    nom,
-    categories,
-    prixAchat,
-    prixVente,
-    stocks,
-    qty,
-    dateAchat,
-    
-  );
+  const { id, nom, categories, prixAchat, prixVente, stocks, qty, dateAchat } = req.body;
+  const ventes = new Ventes( id, nom, categories, prixAchat, prixVente, stocks, qty, dateAchat );
 
   const sql = 'INSERT INTO vente set ?';
   db.query(sql,[ventes],(err,results)=>{
@@ -33,7 +11,7 @@ exports.createVente = (req, res) => {
         res.status(500).json({err})
         console.log(err)
     }else{
-        res.status(200).json({message:'Une ventes effectuees'})
+        res.status(200).json({message:'Vente effectuee'})
     }
   })
 };
@@ -56,7 +34,7 @@ exports.deleteVente = (req,res) => {
      if(err){
       res.status(500).json({err})
      }else{
-      res.status(200).json({message:'Le produit a ete supprimer'})
+      res.status(200).json({message:'La vente a ete supprimer'})
      }
   })
 }
@@ -90,7 +68,3 @@ exports.statsVentes = async (req, res) => {
   }
 }
 
-// SELECT MONTH(timestamps) AS month, COUNT(*) AS total
-// FROM vente
-// WHERE timestamps >= ?
-// GROUP BY MONTH(timestamps)

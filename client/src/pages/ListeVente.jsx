@@ -2,15 +2,16 @@ import React, { useContext } from 'react';
 import { MyStore } from '../context/store';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
-
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 const ListeVente = () => {
-  const {vendues} = useContext(MyStore)
+  const {vendues,cancelStock} = useContext(MyStore)
   //supprimer
-const handledelete = (id)=>{
-  axios.delete(`http://localhost:3004/ventes/${id}`)
+const handledelete = (item)=>{
+  axios.delete(`http://localhost:3004/ventes/${item.id}`)
   .then((res) => res.data)
-  .catch((err)=>console.log(err))
+  .catch((err)=>console.log(err));
+   cancelStock(item)
 }
  
 //vue de frontend
@@ -28,6 +29,7 @@ const handledelete = (id)=>{
              <th className='co'>PRIX DE VENTE</th>
              <th className='co'>QUATITES</th>
              <th className='co'>DATE</th>
+             <th className='co'>ANNULER UNE VENTE</th>
              </tr>
              </thead>
              {vendues.map((item)=>(<tbody key={item.id}>
@@ -37,7 +39,7 @@ const handledelete = (id)=>{
                <th className='co2'>{item.prixVente*item.qty} FCFA</th>
                <th className='co2'>{item.qty}</th>
                <th className='co2'>{item.timestamps}</th>
-               <span onClick={()=>handledelete(item.id)}> <DeleteIcon className='del' /> </span>
+               <span className='cancel' onClick={()=>handledelete(item)}> <RotateLeftIcon  />  Annuler </span>
              </tr>
              </tbody>))}
             
