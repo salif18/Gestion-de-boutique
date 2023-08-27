@@ -4,22 +4,8 @@ const Produits = require("../models/produits");
 //ajout de nouveau produits
 exports.addProduits = async (req, res) => {
   try {
-    const {
-      nom,
-      categories,
-      prixAchat,
-      prixVente,
-      stocks,
-      dateAchat,
-    } = req.body;
-    const produits = new Produits(
-      nom,
-      categories,
-      prixAchat,
-      prixVente,
-      stocks,
-      dateAchat
-    );
+    const { nom, categories, prixAchat, prixVente, stocks, dateAchat } = req.body;
+    const produits = new Produits( nom, categories, prixAchat, prixVente, stocks, dateAchat );
 
     const results = await new Promise((resolve, reject) =>{
     db.query(`INSERT INTO produits set ?`, [produits],(err,results)=>{

@@ -64,6 +64,10 @@
               font-size: 16px;
               color:green
         }
+        .btnsss{
+            display: flex;
+            align-items: center;
+        }
     }
     .inf{
         display: flex;
@@ -103,6 +107,21 @@
     border-radius: 5px;
     &:hover{
         background: #157dd3;
+    }
+}
+
+.btn-vente-recu{
+    width: 200px;
+    height: 40px;
+    font-family: Roboto;
+    color: #fff;
+    background: #36da4b;
+    margin: 20px;
+    border: none;
+    box-shadow: -2px -2px 2px 2px #23c46b;
+    border-radius: 5px;
+    &:hover{
+        background: #15d33e;
     }
 }
 

@@ -14,21 +14,12 @@ export const MyStoreProvider = (props) => {
   const [opperations,setOpperations] = useState([])
   const [errorStock, setErrorStock] = useState("");
   const [message,setMessage] = useState('')
+  const [bestVendu,setBestVendu] = useState([])
 
   //ajout de de nouveau produits
   const handleSave = (item) => {
     axios
-      .post("http://localhost:3004/produits", {
-        id: item.id,
-        nom: item.nom,
-        categories: item.categories,
-        prixAchat: item.prixAchat,
-        prixVente: item.prixVente,
-        stocks: item.stocks,
-        fournisseur: item.fournisseur,
-        contacts: item.contacts,
-        dateAchat: item.dateAchat,
-      })
+      .post("http://localhost:3004/produits", item)
       .then((response) => setMessage(response.data.message))
       .catch((err) => console.log(err));
   };
@@ -57,19 +48,7 @@ export const MyStoreProvider = (props) => {
   const handleVendre = () => {
     panier.map((item) => {
       axios
-        .post("http://localhost:3004/ventes", {
-          id: item.id,
-          nom: item.nom,
-          categories: item.categories,
-          prixAchat: item.prixAchat,
-          prixVente: item.prixVente,
-          stocks: item.stocks,
-          qty: item.qty,
-          dateVente: item.dateVente,
-          dateAchat: item.dateAchat,
-          fournisseur: item.fournisseur,
-          contacts: item.contacts,
-        })
+        .post("http://localhost:3004/ventes", item)
         .then((response) => {
           setMessage(response.data.message)
         })
@@ -81,10 +60,7 @@ export const MyStoreProvider = (props) => {
 
   //envoyer les depenses
   const sendDepensesToDataBase = (item)=> {
-    axios.post('http://localhost:3004/depenses',{
-       montants:item.montants,
-       motifs:item.motifs
-    })
+    axios.post('http://localhost:3004/depenses',item)
     .then((response) => setMessage(response.data.message))
     .catch((err)=> console.log(err))
   }
@@ -129,6 +105,18 @@ export const MyStoreProvider = (props) => {
       getDepenses()
   },[])
 
+
+  //recuperer les meilleur vente
+  useEffect(()=>{
+     const getBestVente =()=>{
+       axios.get('http://localhost:3004/ventes/most_sold')
+       .then((res)=>{
+        setBestVendu(res.data)
+       }).catch((err)=>console.log(err))
+     };
+     getBestVente()
+  },[])
+  
   //calcule de stock
   const configStock = async (item) => {
     const product = produits.find((x) => x.id === item.id);
@@ -239,7 +227,8 @@ export const MyStoreProvider = (props) => {
     opperations:opperations,
     sendDepensesToDataBase:sendDepensesToDataBase,
     depensesTotal:depensesTotal,
-    message:message
+    message:message,
+    bestVendu:bestVendu,
   };
 
   return (

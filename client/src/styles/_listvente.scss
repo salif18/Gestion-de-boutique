@@ -49,6 +49,10 @@
 }
 
 .cancel{
-    color:rgb(4, 0, 255);
+    color:#3498db;
     cursor: pointer;
+    &:hover{
+       color: rgb(0, 175, 15);
+       font-weight: 600;
+    }
 }

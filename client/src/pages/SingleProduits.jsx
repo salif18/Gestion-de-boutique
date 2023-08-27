@@ -60,14 +60,7 @@ const SingleProduits = () => {
          produits.stocks.length <= 0 ){
          setError("Si ce champs n'est pas a modifier veuillez entrer l'ancienne valeur")
       }else{
-        axios.put(`http://localhost:3004/produits/update/${id}`,{
-        nom: produits.nom,
-        categories: produits.categories,
-        prixAchat: produits.prixAchat,
-        prixVente: produits.prixVente,
-        stocks: produits.stocks,
-      
-        })
+        axios.put(`http://localhost:3004/produits/update/${id}`,produits)
           .then((response) => {
             setMessage(response.data.message)
           }).catch((err) => console.log(err));
@@ -114,7 +107,7 @@ const SingleProduits = () => {
         <div className='fourmi'>
             <label >Categories</label>
             <select type='text' name='categories' value={produits.categories} onChange={(e)=>handleChange(e)} placeholder='Categorie'>
-            <option >Categorie--Select</option>
+            <option >Catégorie--Select</option>
             {options.map((item) =>(
                 <option key={item.value} value={item.value}>{item.label}</option>
             ))}
@@ -124,7 +117,7 @@ const SingleProduits = () => {
 
       
         <div className='fourmi'>
-        <label>Quantites</label>
+        <label>Quantités</label>
         <input className='input-qty' type='number' name='stocks' value={produits.stocks} onChange={(e)=>handleChange(e)} placeholder={item?.stocks} />
         {produits.stocks.length <= 0 && <span>{error}</span>}
         </div>

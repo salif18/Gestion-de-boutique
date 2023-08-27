@@ -1,0 +1,58 @@
+.bestvente{
+    flex:4;
+    background: #f0f2f5;
+    width: 100%;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-best{
+    padding: 15px;
+    margin: 10px ,10px ,10px;
+    height: 50px;
+    background: #376369;
+    text-align: center;
+    box-shadow: -2px 2px 2px 2px #52637e;
+    border:1px solid #52637e;
+    h1{
+        font-size: 20px;
+        font-family: Roboto,sans-serif;
+        text-transform: uppercase;
+        color: #fff;
+    }
+}
+
+.best-container{
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 50px;
+    margin-left:10px;
+    margin-right: 10px;
+    border:1px solid #dfdfdf;
+    h1{
+        color: #373b41f8;
+        font-family: Roboto;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #000;
+    }
+    .card-best{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        h1{
+            font-family: 'Roboto';
+            font-size: 16px;
+            margin: 10px;
+        }
+        p{
+            font-family: 'Roboto';
+            margin: 10px;
+            color:rgb(0, 4, 255)
+        }
+    }
+}

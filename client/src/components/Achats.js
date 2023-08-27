@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { MyStore } from '../context/store';
-import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 const Achats = () => {
     const {achatTotal} = useContext(MyStore)
     return (
         <div className='achats'>
-            <h1><CurrencyBitcoinIcon className='icon'/>  Prix d'achats generals </h1>
+            <h1><AttachMoneyIcon className='icon'/>  Prix d'achats générals </h1>
             <p>{achatTotal} Fcfa</p>
         </div>
     );

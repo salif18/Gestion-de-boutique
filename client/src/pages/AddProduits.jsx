@@ -92,9 +92,9 @@ const AddProduits = () => {
             </div>
 
             <div className='fourmi'>
-            <label >Categories</label>
+            <label >Catégories</label>
             <select type='text' name='categories' value={produits.categories} onChange={(e)=>handleChange(e)} placeholder='Categorie'>
-            <option >Categorie--Select</option>
+            <option >Catégorie--Select</option>
             {options.map((item) =>(
                 <option key={item.value} value={item.value}>{item.label}</option>
             ))}
@@ -110,7 +110,7 @@ const AddProduits = () => {
             
 
             <div className='fourmi'>
-            <label>Quantites</label>
+            <label>Quantités</label>
             <input className='input-qty' type='number' name='stocks' value={produits.stocks} onChange={(e)=>handleChange(e)} placeholder='Quantites de stocks' />
             {produits.stocks.length <= 0 && <span>{error}</span>}
             </div>

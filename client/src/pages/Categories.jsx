@@ -80,7 +80,7 @@ const handledelete = (id)=>{
             </nav>
 
             <div className='categorie-container'>
-               <h1>Choisir une categorie de produits</h1>
+               <h1>Choisir une catégorie de produits</h1>
                {
                 <div className='array-products'>
               <table className='table'>

@@ -6,7 +6,7 @@ const Ventes = () => {
     const {venteTotal} = useContext(MyStore)
     return (
         <div className='vents'>
-            <h1><SellIcon className='icon'/>  Prix de ventes globales</h1>
+            <h1><SellIcon className='icon'/>  Prix de ventes globals</h1>
             <p>{venteTotal} Fcfa </p>
         </div>
     );

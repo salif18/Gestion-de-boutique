@@ -129,3 +129,32 @@
     }
     
 }
+
+.btn-print{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    border: none;
+    font-family: 'Roboto';
+    color: #4e4e4e;
+}
+
+@media print{
+    body * {
+        visibility: hidden;
+    }
+
+    .rapports, .rapports * {
+        visibility: visible;
+    }
+
+    .rapports{
+       // display: none;
+    }
+
+    button{
+        display: none;
+    }
+}

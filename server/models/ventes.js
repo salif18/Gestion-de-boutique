@@ -1,18 +1,17 @@
 const db = require('../db/mysql_db');
 
 class Ventes{
-    constructor(id,nom,categories,prixAchat,prixVente,stocks,qty,dateAchat){
+    constructor(id,nom,categories,prixAchat,prixVente,stocks,qty){
         this.id =id;
         this.nom = nom;
         this.categories = categories;
         this.prixAchat = prixAchat;
         this.prixVente = prixVente;
         this.stocks = stocks;
-        this.qty = qty ;
-        this.dateAchat = dateAchat ;
+        this.qty = qty 
       
     }
-}  
+}   
 
 module.exports = Ventes 
 
@@ -28,4 +27,4 @@ module.exports = Ventes
 //     contacts INT,
 //     dateAchat DATE,
 //     fournisseur VARCHAR(255)
-// )`;
+// );`

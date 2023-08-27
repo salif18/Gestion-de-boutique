@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { MyStore } from '../context/store';
-
+import Recus from '../components/Recus';
+import PrintIcon from '@mui/icons-material/Print';
 
 const Rapports = () => {
   const { vendues} = useContext(MyStore)
@@ -8,6 +9,9 @@ const Rapports = () => {
 
   const ventesFilter = vendues?.filter((x) => x.timestamps?.includes(dateValue))
 
+  const handlePrint =()=>{
+    window.print()
+  }
   //quantite total
   const calulQty =()=>{
     const qty = ventesFilter?.map((a) => a.qty);
@@ -47,29 +51,29 @@ const Rapports = () => {
               <label>Rapports du </label>
               <input type='date' value={dateValue} onChange={(e)=>setDateValue(e.target.value)} />
             </div>
-             <div className='rapport-container'>
+             <div className='tableau-de-vente'>
              
                  
-                 <table className='card-rapport'>
-                 <thead>
-                 <tr>
-                 <th>NOMS</th>
-                 <th>CATEGORIES</th>
-                 <th>PRIX D'ACHAT UNITAIRE</th>
-                 <th>PRIX DE VENTE UNITAIRE</th>
-                 <th>QUANTITES</th>
-                 <th>SOMMES</th>
-                 <th>BENEFICES</th>
+                 <table className='table'>
+                 <thead className='head_1'>
+                 <tr className='li_1'>
+                 <th className='co'>NOMS</th>
+                 <th className='co'>CATEGORIES</th>
+                 <th className='co'>PRIX D'ACHAT UNITAIRE</th>
+                 <th className='co'>PRIX DE VENTE UNITAIRE</th>
+                 <th className='co'>QUANTITES</th>
+                 <th className='co'>SOMMES</th>
+                 <th className='co'>BENEFICES</th>
                  </tr>
                  </thead>
                  {ventesFilter.map((item)=>(
                   <tbody key={item._id}>
-                 <tr>
-                  <th className='name'>{item.nom}</th>
-                  <th className='prix'>{item.categories}</th>
-                  <th className='prix'>{item.prixAchat} FCFA</th>
-                  <th className='prix'>{item.prixVente} FCFA</th>
-                  <th className='qty'>{item.qty}</th>
+                 <tr className='li_2'>
+                  <th className='co2'>{item.nom}</th>
+                  <th className='co2'>{item.categories}</th>
+                  <th className='co2'>{item.prixAchat} FCFA</th>
+                  <th className='co2'>{item.prixVente} FCFA</th>
+                  <th className='co2'>{item.qty}</th>
                   <th className=''>{item.prixVente*item.qty} FCFA</th>
                   <th className=''>{((item.prixVente*item.qty/item.qty) - item.prixAchat)*item.qty} FCFA</th>
                  </tr>
@@ -90,6 +94,7 @@ const Rapports = () => {
                    <div className='bene'>
                      <p>LE BENEFICE TOTAL</p><span>{beneficeTotal} FCFA</span>
                    </div>
+                   <button className='btn-print' onClick={()=>handlePrint()}><PrintIcon style={{marginRight:10}}/> Imprimer</button>
                  </div>
 
         </main>

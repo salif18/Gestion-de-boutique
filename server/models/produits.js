@@ -26,8 +26,5 @@ module.exports = Produits;
 //     categories VARCHAR(255),
 //     prixAchat DECIMAL(10, 2),
 //     prixVente DECIMAL(10, 2),
-//     stocks INT,
-//     fournisseur VARCHAR(255),
-//     contacts VARCHAR(255),
 //     date DATE
 // )

@@ -16,9 +16,9 @@ const Depenseur = () => {
 
   //valeurs de la selections
   const options = [
-    {values:'Depenses-personnelles',label:'DEPENSES-PERSONNELLES'},
+    {values:'Dépenses-personnelles',label:'DEPENSES-PERSONNELLES'},
     {values:'Payement-location',label:'PAYEMENT-LOCATION'},
-    {values:"Payement-Electricite",label:"PAYEMENT-ELECTRICITE"}
+    {values:"Payement-Electricité",label:"PAYEMENT-ELECTRICITE"}
   ];
    
   //change letat
@@ -60,7 +60,7 @@ const Depenseur = () => {
     return (
         <main className='depenseurs'>
             <header className='header-fournisseurs'>
-              <h1>Enregistrer vos depenses</h1>
+              <h1>Enregistrer vos dépenses</h1>
             </header>
             <div className='contacts-zone'>
             <form>
@@ -73,7 +73,7 @@ const Depenseur = () => {
              <div className='con'>
              <label>MOTIFS</label>
              <select type='text' name='motifs' value={depenses.motifs} onChange={(e)=>handleChange(e)} >
-            <option >Selectionner--une--motif</option>
+            <option >Sélectionner--un--motif</option>
             {options.map((item) =>(
                 <option key={item.values} value={item.values}>{item.label}</option>
             ))}
@@ -86,14 +86,14 @@ const Depenseur = () => {
 
             <div className='rigth-zone'>
             <div className='filtre'>
-            <label>Depenses du </label>
+            <label>Dépenses du </label>
             <input type='date' value={dateValue} onChange={(e)=>setDateValue(e.target.value)} />
             <div className='donto'>
             <h3>Total</h3>
              <span>{sommeDujour} FCFA</span>
              </div>
             </div>
-            {opperationFilter.length <=0 && <span className='aucun'>Aucunes depenses</span>}
+            {opperationFilter.length <=0 && <span className='aucun'>Aucunes dépenses</span>}
             { opperationFilter.map((item)=>(
               <div className='card-contact' key={item.id}>
              <div className='rig'>

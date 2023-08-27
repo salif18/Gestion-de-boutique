@@ -11,6 +11,8 @@ import AddProduits from "./pages/AddProduits";
 import Depenseur from "./pages/Depenseur";
 import ListeVente from "./pages/ListeVente";
 import SingleProduits from "./pages/SingleProduits";
+import BestVente from "./pages/BestVente";
+import Recus from "./components/Recus";
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
        <Route path="/depenser" element={<Depenseur/>} />
        <Route path="/liste-ventes" element={<ListeVente/>} />
        <Route path="/produits/:id" element={<SingleProduits/>} />
+       <Route path="/most_sold" element={<BestVente/>} />
+       <Route path='/vente-recu' element={<Recus/>} />
       </Routes>
     </div>
     

@@ -14,7 +14,7 @@ const Statstistiques = ({data, columns}) => {
    
     return (
         <div className='stats'>
-            <h1>Etude detaillee</h1>
+            <h1>Etude detaillée</h1>
             <div style={{ height: 300, width: 400 }}>
             <DataGrid  columns={columns} pageSize={10} rows={formattedData} getRowId={(row) => row.annee.toString() + row.mois.toString()} />
           </div>

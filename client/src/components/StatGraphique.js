@@ -11,7 +11,7 @@ const StatGraphique = ({ data }) => {
 
   return (
     <div className='stats'>
-      <h1>Analyse graphique</h1>
+      <h1>Interprétation graphique</h1>
       <div style={{ height: 300, width: 500 }}>
         <LineChart
           width={500}

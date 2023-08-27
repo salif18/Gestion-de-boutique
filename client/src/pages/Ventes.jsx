@@ -21,6 +21,18 @@ const Ventes = () => {
     
   }
 
+  const handleEnregistreAvecRecu =()=>{
+    if(!errorStock){
+      navigate('/vente-recu')
+    }else{ 
+      console.log('err')
+      return false
+   
+    }
+    
+  }
+
+
   
 
   return (
@@ -59,7 +71,11 @@ const Ventes = () => {
              <tr><th></th><th></th><th></th><th></th><th>{item.stocks < item.qty && <span>Stocks insuffisant</span>}</th><th></th></tr>
           </tbody>))}
           </table>
-          {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer les ventes</button>}
+          <div className="btnsss">
+          {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer sans recus</button>}
+          {panier.length > 0 && <span>OU</span>}
+          {panier.length > 0 && <button className="btn-vente-recu" onClick={()=>handleEnregistreAvecRecu()}>Enregistrer avec recus</button>}
+          </div>
           <p className="messag">{message}</p>
         </div>
       </div>

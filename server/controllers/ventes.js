@@ -2,8 +2,8 @@ const db = require("../db/mysql_db");
 const Ventes = require("../models/ventes");
 
 exports.createVente = (req, res) => {
-  const { id, nom, categories, prixAchat, prixVente, stocks, qty, dateAchat } = req.body;
-  const ventes = new Ventes( id, nom, categories, prixAchat, prixVente, stocks, qty, dateAchat );
+  const { id, nom, categories, prixAchat, prixVente, stocks, qty} = req.body;
+  const ventes = new Ventes( id, nom, categories, prixAchat, prixVente, stocks, qty);
 
   const sql = 'INSERT INTO vente set ?';
   db.query(sql,[ventes],(err,results)=>{
@@ -68,3 +68,25 @@ exports.statsVentes = async (req, res) => {
   }
 }
 
+
+exports.PlusVendus = async(req,res) => {
+  const sql = `SELECT nom, 
+                   SUM(qty) as total_vendu 
+                   FROM vente 
+                   GROUP BY nom 
+                   ORDER BY total_vendu DESC  `
+  try{
+    const results = await new Promise((resolve,reject) => {
+      db.query(sql,(err,results)=>{
+        if(err){
+          reject(err)
+        }else{
+          resolve(results)
+        }
+      })
+    })
+    return res.status(200).json(results)
+  }catch(err){
+    return res.status(500).json({error:err.message})
+  }
+}

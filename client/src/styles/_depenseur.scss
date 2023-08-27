@@ -120,11 +120,12 @@
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid #c3cbcc;
-        transition: all 0.3s ease-in-out;
-        background: #d4e8eb;
+        transition: all 0.5s ease-in-out;
+        background: #f0f2f598;
         cursor: pointer;
         &:hover{
             transform: scale(1.02);
+            background-color: #ececec;
         }
        .rig{
         display: flex;
