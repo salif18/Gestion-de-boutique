@@ -46,13 +46,20 @@
         align-items: center;
         h1{
             font-family: 'Roboto';
-            font-size: 16px;
+            font-size: 12px;
+            font-weight: 600;
             margin: 10px;
         }
         p{
             font-family: 'Roboto';
             margin: 10px;
             color:rgb(0, 4, 255)
+        }
+        span{
+            color:rgb(24, 23, 17);
+            font-family: 'Roboto';
+            text-transform: uppercase;
+            font-size: 12px;
         }
     }
 }

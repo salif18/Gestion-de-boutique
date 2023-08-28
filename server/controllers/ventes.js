@@ -2,8 +2,8 @@ const db = require("../db/mysql_db");
 const Ventes = require("../models/ventes");
 
 exports.createVente = (req, res) => {
-  const { id, nom, categories, prixAchat, prixVente, stocks, qty} = req.body;
-  const ventes = new Ventes( id, nom, categories, prixAchat, prixVente, stocks, qty);
+  const { id, nom, categories, prixAchat, prixVente, stocks, qty, timestamps} = req.body;
+  const ventes = new Ventes( id, nom, categories, prixAchat, prixVente, stocks, qty, timestamps);
 
   const sql = 'INSERT INTO vente set ?';
   db.query(sql,[ventes],(err,results)=>{
@@ -11,7 +11,7 @@ exports.createVente = (req, res) => {
         res.status(500).json({err})
         console.log(err)
     }else{
-        res.status(200).json({message:'Vente effectuee'})
+        res.status(200).json({message:'Vente effectuée !!'})
     }
   })
 };
@@ -34,7 +34,7 @@ exports.deleteVente = (req,res) => {
      if(err){
       res.status(500).json({err})
      }else{
-      res.status(200).json({message:'La vente a ete supprimer'})
+      res.status(200).json({message:'La vente a été supprimé'})
      }
   })
 }
@@ -70,10 +70,10 @@ exports.statsVentes = async (req, res) => {
 
 
 exports.PlusVendus = async(req,res) => {
-  const sql = `SELECT nom, 
+  const sql = `SELECT nom,categories, 
                    SUM(qty) as total_vendu 
                    FROM vente 
-                   GROUP BY nom 
+                   GROUP BY nom ,categories
                    ORDER BY total_vendu DESC  `
   try{
     const results = await new Promise((resolve,reject) => {

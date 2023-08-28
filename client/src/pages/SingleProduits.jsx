@@ -4,7 +4,7 @@ import axios from 'axios';
 import { MyStore } from '../context/store';
 
 const SingleProduits = () => {
-    const navigate = useNavigate()
+    
   const { setMessage ,message} = useContext(MyStore)
     //etat initial des champs de formulaire
     const [produits, setProduits] = useState({
@@ -64,7 +64,7 @@ const SingleProduits = () => {
           .then((response) => {
             setMessage(response.data.message)
           }).catch((err) => console.log(err));
-          navigate('/produits');
+          // navigate('/produits');
           setProduits({
             nom:"",
             categories:"",
@@ -96,6 +96,7 @@ const SingleProduits = () => {
          <input type='number' name='prixVente' value={produits.prixVente} onChange={(e)=>handleChange(e)} placeholder={item?.prixVente} />
          {produits.prixVente.length <= 0 && <span>{error}</span>}
          </div>
+         <span className='messge'>{message}</span>
         </div>
 
         <div className='infos-produit'>

@@ -13,6 +13,7 @@ const BestVente = () => {
       {bestVendu.map((item) =>(
         <div className='card-best' key={item.id}>
          <h1>{item.nom}</h1>
+         <span>{item.categories}</span>
          <p>{item.total_vendu}</p>
         </div>
       ))}

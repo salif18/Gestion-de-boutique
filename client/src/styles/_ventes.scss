@@ -59,14 +59,11 @@
             color: red;
            }
         }
-        .messag{
-              font-family: 'Roboto';
-              font-size: 16px;
-              color:green
-        }
+        
         .btnsss{
             display: flex;
             align-items: center;
+           
         }
     }
     .inf{
@@ -157,3 +154,14 @@
     margin: 20px;
 }
 
+.timestamps{
+    outline: none;
+    width: 150px;
+}
+
+.messag{
+    font-family: 'Roboto';
+    font-size: 20px;
+    color:green;
+    text-align: center;
+}

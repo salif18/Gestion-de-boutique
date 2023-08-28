@@ -15,6 +15,7 @@ export const MyStoreProvider = (props) => {
   const [errorStock, setErrorStock] = useState("");
   const [message,setMessage] = useState('')
   const [bestVendu,setBestVendu] = useState([])
+  const [datePersonaliser,setDatePersonnaliser] = useState('')
 
   //ajout de de nouveau produits
   const handleSave = (item) => {
@@ -44,11 +45,13 @@ export const MyStoreProvider = (props) => {
     setPanier([...panier, { ...item, qty: 1 }]);
   };
 
+  console.log(datePersonaliser)
+  console.log(panier)
   //enregistrer ou effectuer une vente
   const handleVendre = () => {
     panier.map((item) => {
       axios
-        .post("http://localhost:3004/ventes", item)
+        .post("http://localhost:3004/ventes",datePersonaliser ? {...item, timestamps:datePersonaliser} : item)
         .then((response) => {
           setMessage(response.data.message)
         })
@@ -139,7 +142,7 @@ export const MyStoreProvider = (props) => {
   //calcule de stock en ca 'annuler une vente
   const cancelStock = async (item) => {
     const product = produits.find((x) => x.id === item.id);
-    if (item.qty > 0 && item.qty <= product.stocks) {
+    if ((item.qty > 0 && item.qty <= product.stocks) || item.qty >= product.stocks) {
       product.stocks += item.qty;
       try {
         await axios.put(
@@ -206,6 +209,11 @@ export const MyStoreProvider = (props) => {
   const depensesTotal = calculeDepenses()
   
 
+  //reinitialiser etat de message automatiquement apres 3s
+  message && setInterval(()=>{
+    setMessage('')
+  },3000)
+
   const contextValue = {
     produits: produits,
     setProduits: setProduits,
@@ -229,6 +237,8 @@ export const MyStoreProvider = (props) => {
     depensesTotal:depensesTotal,
     message:message,
     bestVendu:bestVendu,
+    setDatePersonnaliser:setDatePersonnaliser,
+    datePersonaliser:datePersonaliser
   };
 
   return (

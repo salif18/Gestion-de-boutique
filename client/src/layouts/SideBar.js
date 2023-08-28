@@ -7,15 +7,16 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import GridViewIcon from '@mui/icons-material/GridView';
 const SideBar = () => {
     return (
         <aside className='sidebar'>
-           <NavLink className='liens' to='/' ><HomeIcon className='icon'/> Vue d'ensemble</NavLink> 
+           <NavLink className='liens' to='/' ><GridViewIcon className='icon'/> Tableau de bord</NavLink> 
            <NavLink className='liens' to='/produits' ><AddBusinessIcon className='icon'/>Produits</NavLink> 
            <NavLink className='liens' to='/categories' ><CategoryIcon className='icon'/>Catégories</NavLink> 
            <NavLink className='liens' to='/ventes' ><MonetizationOnIcon className='icon'/>Ventes</NavLink> 
            <NavLink className='liens' to='/rapports' ><AssignmentIcon className='icon'/>Rapports</NavLink>
-           <NavLink className='liens' to='/most_sold'><AutoAwesomeIcon className='icon'/>TOP 5</NavLink> 
+           <NavLink className='liens' to='/most_sold'><AutoAwesomeIcon className='icon'/>Meilleur vente</NavLink> 
            <NavLink className='liens' to='/depenser'><PointOfSaleIcon className='icon'/>Dépenses</NavLink>
         </aside>
     );

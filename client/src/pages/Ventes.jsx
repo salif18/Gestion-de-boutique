@@ -5,7 +5,9 @@ import { MyStore } from "../context/store";
 
 const Ventes = () => {
   const navigate = useNavigate()
-  const {handleVendre,message, panier, increment, decrement, setPanier,errorStock} = useContext(MyStore)
+  const {setDatePersonnaliser,
+    handleVendre,datePersonaliser,
+    message, panier, increment, decrement, setPanier,errorStock} = useContext(MyStore)
 
   //bouton pour enregistrer les donnees dans la base de donnee et vider le panier
   const handleEnregistre =()=>{
@@ -32,7 +34,6 @@ const Ventes = () => {
     
   }
 
-
   
 
   return (
@@ -52,7 +53,9 @@ const Ventes = () => {
              <th>PRIX DE VENTE </th>            
              <th>QUANTITES</th>
              <th>SOMME</th>
+             <th>AJOUTER UNE DATE</th>
            </tr>
+           <tr><th></th><th></th><th></th><th></th><th></th><th></th><th><input className="timestamps" type='date' name='timestamps' value={datePersonaliser} onChange={(e)=>setDatePersonnaliser(e.target.value)} /></th></tr>
           </thead>
           {panier.map((item)=>(<tbody key={item.id}>
              <tr>
@@ -67,17 +70,21 @@ const Ventes = () => {
 
                 </th>
                 <th className="qtys">{item.qty*item.prixVente} FCFA</th>
+               
              </tr>
              <tr><th></th><th></th><th></th><th></th><th>{item.stocks < item.qty && <span>Stocks insuffisant</span>}</th><th></th></tr>
           </tbody>))}
           </table>
-          <div className="btnsss">
-          {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer sans recus</button>}
-          {panier.length > 0 && <span>OU</span>}
-          {panier.length > 0 && <button className="btn-vente-recu" onClick={()=>handleEnregistreAvecRecu()}>Enregistrer avec recus</button>}
-          </div>
-          <p className="messag">{message}</p>
+          
+          
         </div>
+       
+      </div>
+      <div className="btnsss">
+      <p className="messag">{message}</p>
+      {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer sans recus</button>}
+      {panier.length > 0 && <span>OU</span>}
+      {panier.length > 0 && <button className="btn-vente-recu" onClick={()=>handleEnregistreAvecRecu()}>Enregistrer avec recus</button>}
       </div>
     </main>
   );

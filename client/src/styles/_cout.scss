@@ -185,3 +185,89 @@
 
     }
 }
+
+.tendance{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 600px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .ssss{
+        display: flex;
+        
+    }
+    .tendance-cont{
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+         p{
+        font-size: 12px;
+        font-family: Roboto;
+        margin-right: 10px;
+       }
+       span{
+        color:rgb(53, 28, 194);
+        font-weight: 600;
+       }
+    }
+   
+    .icon{
+        font-size: 30px;
+        color: rgb(255, 145, 0);
+    }
+}
+
+.stocksin{
+    padding: 15px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border:1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #d3d3d3;
+    width: 600px;
+    cursor: pointer;
+    h1{
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .ssss{
+        display: flex;
+    }
+    .stocks-cont{
+        margin-left: 10px;
+        display: flex;
+        flex-wrap: wrap;
+         .nom{
+        font-size: 14px;
+        font-family: Roboto;
+        margin-right: 10px;
+       }
+       .cat{
+        font-size: 14px;
+        font-family: Roboto;
+        margin-right: 10px;
+        color: #009cb8;
+       }
+       span{
+        color:red
+       }
+    }
+   
+    .icon{
+        font-size: 30px;
+        color: rgb(245, 0, 0);
+    }
+}

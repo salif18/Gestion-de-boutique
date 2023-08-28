@@ -34,7 +34,7 @@ const {panier,handleVendre,setPanier} = useContext(MyStore)
              <p>QUANTITES:</p><span>{item.qty}</span>
              </div>
              <div className='nom-prod'>
-             <p>TOTAL:</p><span>{item.qty*item.prixvente} FCFA</span>
+             <p>TOTAL:</p><span>{item.qty*item.prixVente} FCFA</span>
              </div>
             </div>))}
             <div className="bt">

@@ -8,6 +8,8 @@ import Depenses from '../components/Depenses';
 import axios from 'axios';
 import StatGraphique from '../components/StatGraphique';
 import CoutProduct from '../components/CoutProduct';
+import Tendance from '../components/Tendance';
+import EtatStocks from '../components/EtatStocks';
 
 
 
@@ -43,6 +45,10 @@ const Home = () => {
             <header className='header-home'>
               <h1>RESUME GENERAL</h1>
             </header>
+            <div className='home-container-d'>
+             <Tendance/>
+             <EtatStocks/>
+           </div>
             <div className='home-container-a'>
              <Achats/>
             <CoutProduct/>
