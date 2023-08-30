@@ -11,7 +11,7 @@ exports.createVente = (req, res) => {
         res.status(500).json({err})
         console.log(err)
     }else{
-        res.status(200).json({message:'Vente effectuée !!'})
+        res.status(200).json({message:'Vente effectuée avec succès !!'})
     }
   })
 };
@@ -34,7 +34,7 @@ exports.deleteVente = (req,res) => {
      if(err){
       res.status(500).json({err})
      }else{
-      res.status(200).json({message:'La vente a été supprimé'})
+      res.status(200).json({message:'La vente a été annulée avec succès !!'})
      }
   })
 }

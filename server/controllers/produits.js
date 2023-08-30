@@ -16,7 +16,7 @@ exports.addProduits = async (req, res) => {
         }
     });
   })
-    return res.status(201).json({message:'Produit a été ajouté'});
+    return res.status(201).json({message:'Produit a été ajouté avec succès !!'});
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
@@ -78,7 +78,7 @@ exports.updateProduit = async (req, res) => {
         }
       });
     });
-    return res.status(201).json({message:'Produit a été modifié'});
+    return res.status(201).json({message:'Produit a été modifié avec succès !!'});
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
@@ -117,7 +117,7 @@ exports.deleteproduit = async (req, res) => {
             }
         })
     }) 
-    return res.status(200).json({message:'Le produit a été supprimé'});
+    return res.status(200).json({message:'Le produit a été supprimé avec succès !!'});
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

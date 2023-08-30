@@ -6,5 +6,5 @@ class Depenses{
         this.motifs = motifs
     }
 }
-
+ 
 module.exports = Depenses

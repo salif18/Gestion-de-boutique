@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 const Depenseur = () => {
-  const {opperations , sendDepensesToDataBase} = useContext(MyStore)
+  const {opperations ,message, sendDepensesToDataBase} = useContext(MyStore)
   const [dateValue, setDateValue] = useState('');
 
   //etat initial des champs formulaire
@@ -80,7 +80,9 @@ const Depenseur = () => {
             </select>
             {depenses.motifs.length <=0 && <span>{error}</span>}
              </div>
+             <span className='messge-dep'>{message}</span>
              <button className='btn-contact'  onClick={(e)=>handleSend(e)}>Enregistrer</button>
+             
             </div>
             </form>
 
@@ -109,6 +111,7 @@ const Depenseur = () => {
              <p>{item.timestamps}</p>
              </div> 
              <span className='btn-depense' onClick={()=>handleDelete(item.id)}><DeleteIcon className='i' /></span>
+             
              </div>
              ))}
             </div>

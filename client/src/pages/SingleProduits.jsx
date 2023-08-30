@@ -1,11 +1,10 @@
-import React, {  useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import {  useParams } from 'react-router';
 import axios from 'axios';
-import { MyStore } from '../context/store';
+
 
 const SingleProduits = () => {
-    
-  const { setMessage ,message} = useContext(MyStore)
+  const [messages,setMessages] = useState('')
     //etat initial des champs de formulaire
     const [produits, setProduits] = useState({
       nom:"",
@@ -62,7 +61,7 @@ const SingleProduits = () => {
       }else{
         axios.put(`http://localhost:3004/produits/update/${id}`,produits)
           .then((response) => {
-            setMessage(response.data.message)
+            setMessages(response.data.message)
           }).catch((err) => console.log(err));
           // navigate('/produits');
           setProduits({
@@ -73,9 +72,21 @@ const SingleProduits = () => {
             stocks:"",
         })
       }
-    }
+    };
 
     
+//supprimer le produit
+const handledelete = (id)=>{
+  axios.delete(`http://localhost:3004/produits/${id}`)
+  .then((res) =>{
+    setMessages(res.data.message)
+  })
+  .catch((err)=>console.log(err))
+}
+
+    messages && setInterval(()=>{
+      setMessages('')
+    },3000)
   
     //le rendue vue
     return (
@@ -96,7 +107,7 @@ const SingleProduits = () => {
          <input type='number' name='prixVente' value={produits.prixVente} onChange={(e)=>handleChange(e)} placeholder={item?.prixVente} />
          {produits.prixVente.length <= 0 && <span>{error}</span>}
          </div>
-         <span className='messge'>{message}</span>
+         <span className='messge-single'>{messages}</span>
         </div>
 
         <div className='infos-produit'>
@@ -124,8 +135,8 @@ const SingleProduits = () => {
         </div>
         </div>
 
-        <button className='btn-save-modif' onClick={()=>handlePut(item.id)}>Enregistrer</button>
-       
+        <button className='btn-save-modif' onClick={()=>handlePut(item.id)}>Modifier</button>
+        <button className='btn-supp-modif' onClick={()=>handledelete(item.id)}>Supprimer</button>
          </div>
     </main>
     );

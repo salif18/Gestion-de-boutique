@@ -12,7 +12,7 @@ class Ventes{
         this.timestamps=timestamps
       
     }
-}   
+}    
 
 module.exports = Ventes 
 
@@ -24,8 +24,5 @@ module.exports = Ventes
 //     prixVente DECIMAL(10,2),
 //     stocks INT,
 //     qty INT,
-//     dateVente DATE,
-//     contacts INT,
-//     dateAchat DATE,
-//     fournisseur VARCHAR(255)
+//     timestamps TIMESTAMP
 // );`

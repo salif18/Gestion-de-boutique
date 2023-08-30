@@ -43,7 +43,7 @@ const Home = () => {
     return (
         <main className='home'>
             <header className='header-home'>
-              <h1>RESUME GENERAL</h1>
+              <h1>TABLEAU DE RESUME</h1>
             </header>
             <div className='home-container-d'>
              <Tendance/>

@@ -5,6 +5,9 @@ const db = mysql.createConnection({
     password:'',
     database:'gestionnaire'
 }) 
+
+//fonction de connection a la base de donnees
+
 db.connect((err)=>{
     if(err){
         console.log('echec')
@@ -13,5 +16,6 @@ db.connect((err)=>{
         console.log('connecter a la base de donnee')
     }
 })
+
 
 module.exports = db

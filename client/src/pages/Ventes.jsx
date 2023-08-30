@@ -6,30 +6,16 @@ import { MyStore } from "../context/store";
 const Ventes = () => {
   const navigate = useNavigate()
   const {setDatePersonnaliser,
-    handleVendre,datePersonaliser,
-    message, panier, increment, decrement, setPanier,errorStock} = useContext(MyStore)
+    datePersonaliser,
+    message, panier, increment, decrement, errorStock} = useContext(MyStore)
 
-  //bouton pour enregistrer les donnees dans la base de donnee et vider le panier
-  const handleEnregistre =()=>{
-    if(!errorStock){
-       handleVendre()
-       setPanier([])
-      //  navigate('/produits')
-    }else{ 
-      console.log('err')
-      return false
-   
-    }
-    
-  }
-
+  
   const handleEnregistreAvecRecu =()=>{
     if(!errorStock){
       navigate('/vente-recu')
     }else{ 
       console.log('err')
       return false
-   
     }
     
   }
@@ -81,10 +67,9 @@ const Ventes = () => {
        
       </div>
       <div className="btnsss">
-      <p className="messag">{message}</p>
-      {panier.length > 0 && <button className="btn-vente" onClick={()=>handleEnregistre()}>Enregistrer sans recus</button>}
-      {panier.length > 0 && <span>OU</span>}
-      {panier.length > 0 && <button className="btn-vente-recu" onClick={()=>handleEnregistreAvecRecu()}>Enregistrer avec recus</button>}
+      <p className="message-vente">{message}</p>
+     
+      {panier.length > 0 && <button className="btn-vente-recu" onClick={()=>handleEnregistreAvecRecu()}>Enregistrer</button>}
       </div>
     </main>
   );

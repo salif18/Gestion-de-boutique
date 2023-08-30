@@ -1,19 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MyStore } from '../context/store';
-import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 
 const ListeVente = () => {
   const {vendues,cancelStock} = useContext(MyStore)
+  const [message ,setMessage] = useState('')
   //supprimer
 const handledelete = (item)=>{
   axios.delete(`http://localhost:3004/ventes/${item.id}`)
-  .then((res) => res.data)
+  .then((res) => {
+    setMessage(res.data.message)
+  })
   .catch((err)=>console.log(err));
    cancelStock(item)
 }
- 
+
+message && setInterval(()=>setMessage(''),3000)
 //vue de frontend
     return (
         <main className='list'>
@@ -40,9 +43,10 @@ const handledelete = (item)=>{
                <th className='co2'>{item.qty}</th>
                <th className='co2'>{item.timestamps}</th>
                <span className='cancel' onClick={()=>handledelete(item)}> <RotateLeftIcon  />  Annuler </span>
+              
              </tr>
              </tbody>))}
-            
+             <span className='messge-vente-list'>{message}</span>
              </table>
             </div>
         </main>

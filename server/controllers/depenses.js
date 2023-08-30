@@ -1,6 +1,6 @@
 const db = require('../db/mysql_db');
 const Depenses = require('../models/depenses')
-
+ 
 exports.addDepenses = async(req,res)=> {
     const {montants, motifs} = req.body;
     const depenses = new Depenses(montants, motifs)
@@ -9,13 +9,13 @@ exports.addDepenses = async(req,res)=> {
         db.query(`INSERT INTO depenses set ?`,depenses,(err,results)=>{
             if(err){
                 reject(err)
-            }else{
+            }else{ 
                 resolve(results)
             }
         })
       });
       
-      return res.status(201).json(results)
+      return res.status(201).json({message:'Dépense enregistrée avec succès !!'})
     }catch(err){
         console.log(err)
         return res.status(500).json({error:err.message})
@@ -51,7 +51,7 @@ exports.deleteDepenses = async(req,res)=> {
             }
         })
       });
-      return res.status(200).json(results)
+      return res.status(200).json({message:'Dépense supprimée avec succès !!'})
     }catch(err){
         return res.status(500).json({error:err.message})
     }

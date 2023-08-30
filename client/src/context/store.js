@@ -212,7 +212,7 @@ export const MyStoreProvider = (props) => {
   //reinitialiser etat de message automatiquement apres 3s
   message && setInterval(()=>{
     setMessage('')
-  },3000)
+  },3500)
 
   const contextValue = {
     produits: produits,

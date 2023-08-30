@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { MyStore } from '../context/store';
-import Recus from '../components/Recus';
 import PrintIcon from '@mui/icons-material/Print';
 
 const Rapports = () => {
   const { vendues} = useContext(MyStore)
   const [dateValue, setDateValue] = useState('');
-
   const ventesFilter = vendues?.filter((x) => x.timestamps?.includes(dateValue))
 
   const handlePrint =()=>{
@@ -40,6 +38,13 @@ const Rapports = () => {
   }
   const beneficeTotal = calculBenefice(ventesFilter);
 
+   const datevente = ventesFilter[0]
+  // const d = new Date()
+  // const y = d.getFullYear(datevente.timestamps)
+  // const m = d.getMonth(datevente.timestamps)+1
+  // const day = d.getDate(datevente.timestamps)
+
+  // const date = `${day}/${m}/${y}`
   
     return (
         <main className='rapports'>
@@ -94,6 +99,7 @@ const Rapports = () => {
                    <div className='bene'>
                      <p>LE BENEFICE TOTAL</p><span>{beneficeTotal} FCFA</span>
                    </div>
+                   <p>Rapports du {datevente?.timestamps}</p>
                    <button className='btn-print' onClick={()=>handlePrint()}><PrintIcon style={{marginRight:10}}/> Imprimer</button>
                  </div>
 
