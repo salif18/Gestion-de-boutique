@@ -124,6 +124,28 @@ const options = [
                 </th>
                 </tr>
               </tbody>))}
+
+              {(!searchValue && !selection) &&
+                produits.map((item)=>(<tbody className='table-body' key={item.id}>
+               <tr className='ligne-body'>
+                <th className='colon'>{item.nom}</th>
+                <th className='colon'>{item.categories}</th>
+                <th className='colon'>{item.prixAchat} FCFA</th>
+                <th className='colon'>{item.prixVente} FCFA</th>
+                <th className='colon'>{item.stocks <= 0 ? <span className='fini'>Ce stock est fini</span> : item.stocks}</th>
+                <th className='colon'>{item.dateAchat}</th>
+                <th className='colon'>
+                {item.stocks > 0 && <span onClick={()=>handleAjouter(item)}><ShoppingCartIcon className='ico' /></span>}
+                <span onClick={()=>navigate(`/produits/${item.id}`)}> <EditIcon className='edit' /> </span>
+                {item.stocks <= 0 && 
+                  
+                  <span onClick={()=>handledelete(item.id)}>
+                    <DeleteIcon className='del' /> 
+                  </span>
+                 }
+                </th>
+                </tr>
+              </tbody>))}
               </table>
             </div>
         </main>

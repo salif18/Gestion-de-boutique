@@ -74,8 +74,8 @@ export const MyStoreProvider = (props) => {
     const getProduits =()=>{
     axios
       .get("http://localhost:3004/produits")
-      .then((res) => {
-        setProduits(res.data);
+      .then((response) => {
+        setProduits(response.data);
       })
       .catch((err) => console.log(err));
     };
