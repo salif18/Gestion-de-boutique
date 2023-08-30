@@ -1,16 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MyStore } from '../context/store';
 import axios from 'axios';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import { useNavigate } from 'react-router';
 
 const ListeVente = () => {
-  const {vendues,cancelStock} = useContext(MyStore)
+  const navigate = useNavigate()
+  const {cancelStock} = useContext(MyStore)
   const [message ,setMessage] = useState('')
+  const [vendues , setVendues] = useState([])
+
+  //charger les ventes
+  useEffect(() => {
+    const getVente =()=>{
+    axios
+      .get("http://localhost:3004/ventes")
+      .then((response) => {
+        setVendues(response.data);
+      })
+      .catch((err) => console.log(err));
+    };
+    getVente()
+  }, []);
+
   //supprimer
 const handledelete = (item)=>{
   axios.delete(`http://localhost:3004/ventes/${item.id}`)
   .then((res) => {
     setMessage(res.data.message)
+    navigate('/liste-ventes') 
   })
   .catch((err)=>console.log(err));
    cancelStock(item)

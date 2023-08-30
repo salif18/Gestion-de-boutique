@@ -123,12 +123,12 @@ export const MyStoreProvider = (props) => {
   //calcule de stock
   const configStock = async (item) => {
     const product = produits.find((x) => x.id === item.id);
-    if (item.qty > 0 && item.qty <= product.stocks) {
+    if (item.qty > 0 && item.qty <= product?.stocks) {
       product.stocks -= item.qty;
       try {
         await axios.put(
-          `http://localhost:3004/produits/newStock/${product.id}`,
-          { stocks: product.stocks }
+          `http://localhost:3004/produits/newStock/${product?.id}`,
+          { stocks: product?.stocks }
         );
       } catch (err) {
         console.log(err);
@@ -142,7 +142,7 @@ export const MyStoreProvider = (props) => {
   //calcule de stock en ca 'annuler une vente
   const cancelStock = async (item) => {
     const product = produits.find((x) => x.id === item.id);
-    if ((item.qty > 0 && item.qty <= product.stocks) || item.qty >= product.stocks) {
+    if ((item.qty > 0 && item.qty <= product?.stocks) || item.qty >= product?.stocks) {
       product.stocks += item.qty;
       try {
         await axios.put(

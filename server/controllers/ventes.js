@@ -17,7 +17,7 @@ exports.createVente = (req, res) => {
 };
 
 exports.getVentes = (req,res) =>{
-    const sql = 'SELECT * FROM vente';
+    const sql = 'SELECT * FROM vente ORDER BY timestamps DESC';
     db.query(sql,(err,results)=>{
         if(err){
             res.status(500).json({err})

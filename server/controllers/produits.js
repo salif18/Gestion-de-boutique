@@ -24,23 +24,17 @@ exports.addProduits = async (req, res) => {
 
 exports.getProduits = async (req, res) => {
   try {
-    // const results = await new Promise((resolve, reject) => {
-    //   db.query(`SELECT * FROM produits`, (err, results) => {
-    //     if (err) {
-    //       reject(err);
-    //     } else {
-    //       resolve(results);
-    //     }
-    //   });
-    // });
-    // return res.status(200).json(results);
-    db.query('SELECT*FROM produits',(err,results)=>{
-      if(err){
-        return res.status(400).json({err})
-      }else{
-        return res.status(200).json(results)
-      }
-    })
+    const results = await new Promise((resolve, reject) => {
+      db.query(`SELECT * FROM produits ORDER BY dateAchat DESC`, (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results);
+        }
+      });
+    });
+    return res.status(200).json(results);
+    
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

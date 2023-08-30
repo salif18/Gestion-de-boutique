@@ -40,18 +40,23 @@
     margin: 10px;
     background: #fff;
     box-shadow: -2px -2px 2px 2px #bdc0c0;
-    border-radius: 10px;
+    //border-radius: 5px;
     border:1px solid #dfdfdf;
     
     .vente-infos{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        thead{
+            border: 1px solid #e7e7e7;
+               
+        }
         tbody{
             th{
                 margin: 10px;
                 font-family: Open sans;
                 font-weight: 500;
+                border: 1px solid #e7e7e7;
             }
            span{
             text-align: center;
@@ -156,7 +161,10 @@
 
 .timestamps{
     outline: none;
-    width: 150px;
+    padding: 10px;
+    width: 160px;
+    border-radius: 10px;
+    border: 1px solid #d4d4d4;
 }
 
 .message-vente{

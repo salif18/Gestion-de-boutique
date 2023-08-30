@@ -1,8 +1,18 @@
-import React, { useContext } from 'react';
-import { MyStore } from '../context/store';
+import React, {useEffect, useState } from 'react';
+import axios from 'axios';
 
 const BestVente = () => {
-    const {bestVendu} = useContext(MyStore)
+    const [bestVendu ,setBestVendu] = useState([])
+    //recuperer les meilleur vente
+  useEffect(()=>{
+    const getBestVente =()=>{
+      axios.get('http://localhost:3004/ventes/most_sold')
+      .then((res)=>{
+       setBestVendu(res.data)
+      }).catch((err)=>console.log(err))
+    };
+    getBestVente()
+ },[])
     return (
         <main className='bestvente'>
         <header className='header-best'>

@@ -1,12 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MyStore } from '../context/store';
 import axios from 'axios';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router';
 
 
 const Depenseur = () => {
-  const {opperations ,message, sendDepensesToDataBase} = useContext(MyStore)
+  const {message, sendDepensesToDataBase} = useContext(MyStore)
   const [dateValue, setDateValue] = useState('');
+  const [opperations,setOpperations] = useState([])
+  const navigate = useNavigate()
+  //charger les depenses
+  useEffect(()=>{
+    const getDepenses =()=>{
+     axios.get('http://localhost:3004/depenses')
+     .then((res) =>{
+      setOpperations(res.data)
+     }).catch(err => console.log(err))
+    };
+    getDepenses()
+},[])
 
   //etat initial des champs formulaire
   const [depenses,setDepenses] = useState({ montants:'', motifs:''})
@@ -33,8 +46,10 @@ const Depenseur = () => {
       if(depenses.montants.length <= 0 || depenses.motifs.length <= 0){
        setError('Veuiller ajouter les valeurs')
       }else{
+        navigate('/depenser')
         sendDepensesToDataBase(depenses)
-        setDepenses({ montants:'', motifs:''})
+        setDepenses({ montants:'', motifs:''});
+        
       }
     };
     

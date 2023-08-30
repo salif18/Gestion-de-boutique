@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import EditIcon from '@mui/icons-material/Edit';
 import { MyStore } from '../context/store';
@@ -10,9 +10,22 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 
 
 const Produits = () => {
+  const [produits, setProduits] = useState([])
   const navigate = useNavigate()
-  const {produits,handleAddPanier} = useContext(MyStore)
+  const {handleAddPanier} = useContext(MyStore)
 
+//charger les produits
+useEffect(() => {
+  const getProduits =()=>{
+  axios
+    .get("http://localhost:3004/produits")
+    .then((response) => {
+      setProduits(response.data);
+    })
+    .catch((err) => console.log(err));
+  };
+  getProduits()
+}, []);
 
   //caclule le nombre total de stocks
 const calculeStock = ()=>{
@@ -82,6 +95,7 @@ const options = [
                  <th className='colonne'>ACTIONS</th>
                </tr>
                </thead>
+               {/*afficher cette partie si la valeur de recheche est existe */}
               {searchValue &&
                 ProductFilter?.map((item)=>(<tbody className='table-body' key={item.id}>
                <tr className='ligne-body'>
@@ -102,7 +116,7 @@ const options = [
                 </th>
                </tr>
               </tbody>))}
-
+              {/*afficher cette partie si la valeur de recheche est nul et lavaleur de selection est existe */}
               {!searchValue &&
                 produits.slice(0,selection).map((item)=>(<tbody className='table-body' key={item.id}>
                <tr className='ligne-body'>
@@ -116,7 +130,6 @@ const options = [
                 {item.stocks > 0 && <span onClick={()=>handleAjouter(item)}><ShoppingCartIcon className='ico' /></span>}
                 <span onClick={()=>navigate(`/produits/${item.id}`)}> <EditIcon className='edit' /> </span>
                 {item.stocks <= 0 && 
-                  
                   <span onClick={()=>handledelete(item.id)}>
                     <DeleteIcon className='del' /> 
                   </span>
@@ -124,7 +137,7 @@ const options = [
                 </th>
                 </tr>
               </tbody>))}
-
+              {/*afficher cette partie si la valeur de recheche est nul et lavaleur de selection est null */}
               {(!searchValue && !selection) &&
                 produits.map((item)=>(<tbody className='table-body' key={item.id}>
                <tr className='ligne-body'>
@@ -137,8 +150,7 @@ const options = [
                 <th className='colon'>
                 {item.stocks > 0 && <span onClick={()=>handleAjouter(item)}><ShoppingCartIcon className='ico' /></span>}
                 <span onClick={()=>navigate(`/produits/${item.id}`)}> <EditIcon className='edit' /> </span>
-                {item.stocks <= 0 && 
-                  
+                {item.stocks <= 0 &&                  
                   <span onClick={()=>handledelete(item.id)}>
                     <DeleteIcon className='del' /> 
                   </span>

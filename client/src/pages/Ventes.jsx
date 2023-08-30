@@ -33,23 +33,23 @@ const Ventes = () => {
           <table>
           <thead>
            <tr>
-             <th>NOMS</th>
-             <th>CATEGORIES</th>
-             <th>PRIX D'ACHAT</th>
-             <th>PRIX DE VENTE </th>            
-             <th>QUANTITES</th>
-             <th>SOMME</th>
-             <th>AJOUTER UNE DATE</th>
+             <th className="th">NOMS</th>
+             <th className="th">CATEGORIES</th>
+             <th className="th">PRIX D'ACHAT</th>
+             <th className="th">PRIX DE VENTE </th>            
+             <th className="th">QUANTITES</th>
+             <th className="th">SOMME</th>
+             <th className="th">AJOUTER UNE DATE</th>
            </tr>
            <tr><th></th><th></th><th></th><th></th><th></th><th></th><th><input className="timestamps" type='date' name='timestamps' value={datePersonaliser} onChange={(e)=>setDatePersonnaliser(e.target.value)} /></th></tr>
           </thead>
           {panier.map((item)=>(<tbody key={item.id}>
              <tr>
-                <th>{item.nom}</th>
-                <th>{item.categories}</th>
-                <th>{item.prixAchat} FCFA</th>
-                <th>{item.prixVente} FCFA</th>
-                <th>
+                <th className="th">{item.nom}</th>
+                <th className="th">{item.categories}</th>
+                <th className="th">{item.prixAchat} FCFA</th>
+                <th className="th">{item.prixVente} FCFA</th>
+                <th className="th">
                  <button className="btn-incre" onClick={()=>increment(item)}>+</button>
                   { item.qty} 
                  {item.qty > 1 && <button className="btn-decre" onClick={()=>decrement(item)}>-</button>}

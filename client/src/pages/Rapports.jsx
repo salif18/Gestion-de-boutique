@@ -1,11 +1,25 @@
-import React, { useContext, useState } from 'react';
-import { MyStore } from '../context/store';
+import React, { useEffect, useState } from 'react';
+//import { MyStore } from '../context/store';
 import PrintIcon from '@mui/icons-material/Print';
+import axios from 'axios';
 
 const Rapports = () => {
-  const { vendues} = useContext(MyStore)
+  const [vendues, setVendues] = useState([])
   const [dateValue, setDateValue] = useState('');
   const ventesFilter = vendues?.filter((x) => x.timestamps?.includes(dateValue))
+
+//charger les ventes
+useEffect(() => {
+  const getVente =()=>{
+  axios
+    .get("http://localhost:3004/ventes")
+    .then((response) => {
+      setVendues(response.data);
+    })
+    .catch((err) => console.log(err));
+  };
+  getVente()
+}, []);
 
   const handlePrint =()=>{
     window.print()
